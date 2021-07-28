@@ -1,7 +1,12 @@
 {
   "name": "emoji-picker",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "author": "yosef_beder <dryosefbeder@gmail.com> (https://github.com/yosefbeder)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yosefbeder/emoji-picker.git"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -12,6 +17,7 @@
     "@types/react-dom": "^17.0.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
     "react-scripts": "4.0.3",
     "typescript": "^4.3.5",
     "web-vitals": "^1.1.2"

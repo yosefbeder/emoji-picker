@@ -1,17 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
+// For testing purpose
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+import classes from './styles/emoji-picker.module.css';
+import CategoriesList from './containers/CategoriesList';
+import Searchbar from './components/Searchbar';
+import EmojisList from './containers/EmojisList';
+import { CategoryType, EmojiPickerProps, EmojiType } from './types';
+import categories from './dummy-categories.json';
+import emojis from './dummy-emojis.json';
+
+const EmojiPicker: React.FC<EmojiPickerProps> = ({
+  theme = 'light',
+  size = 'med',
+}) => {
+  const [selectedCategory, setSelectedCategory] =
+    useState<CategoryType>('smileys-emotion');
+
+  const onCategorySelect = (category: CategoryType) =>
+    setSelectedCategory(category);
+
+  return (
+    <div
+      className={`${classes['container']} ${
+        classes[`container--${theme}-theme`]
+      } ${classes[`container--${size}-size`]}`}
+    >
+      <CategoriesList
+        items={categories as CategoryType[]}
+        selected={selectedCategory}
+        onCategorySelect={onCategorySelect}
+      />
+      <Searchbar onSearch={emojiName => console.log(emojiName)} />
+      <EmojisList items={emojis as EmojiType[]} />
+    </div>
+  );
+};
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <EmojiPicker />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

@@ -1,0 +1,45 @@
+.container {
+  position: relative;
+  width: min-content;
+}
+
+.text {
+  --triangle-side: 0.5rem;
+
+  position: absolute;
+  top: calc(100% + var(--triangle-side));
+  left: 50%;
+  transform: translate(-50%, 0.5rem);
+
+  background-color: var(--tooltip-bg);
+  color: var(--tooltip-color);
+
+  font-size: 0.8rem;
+  width: max-content;
+  padding: var(--space-sm);
+  border-radius: 0.25rem;
+  opacity: 0;
+
+  pointer-events: none;
+  transition: all 200ms;
+
+  z-index: 1;
+}
+
+.text::after {
+  content: '';
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+
+  border: calc(var(--triangle-side) / 2) solid transparent;
+  border-top: 0;
+  border-bottom: var(--triangle-side) solid var(--tooltip-bg);
+}
+
+.element:hover + .text {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
