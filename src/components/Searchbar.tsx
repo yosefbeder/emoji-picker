@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchbarProps } from '../types';
+import { SearchbarProps } from '../types/props';
 import classes from '../styles/emoji-picker.module.css';
 
 const Searchbar: React.FC<SearchbarProps> = ({ onSearch }) => {

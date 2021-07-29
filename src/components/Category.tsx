@@ -1,5 +1,5 @@
 import React from 'react';
-import { CategoryProps } from '../types';
+import { CategoryProps } from '../types/props';
 import classes from '../styles/emoji-picker.module.css';
 import withTooltip from '../helpers/with-tooltip';
 import { useState } from 'react';

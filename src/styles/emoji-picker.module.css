@@ -154,40 +154,36 @@
   transition: left 200ms;
 }
 
-.categories-slider--smileys-emotion {
+.categories-slider--smileys_people {
   left: var(--category-margin);
 }
 
-.categories-slider--people-body {
+.categories-slider--animals_nature {
   left: calc(var(--category-margin) * 3 + var(--category-size));
 }
 
-.categories-slider--animals-nature {
+.categories-slider--food_drink {
   left: calc(var(--category-margin) * 5 + var(--category-size) * 2);
 }
 
-.categories-slider--food-drink {
+.categories-slider--travel_places {
   left: calc(var(--category-margin) * 7 + var(--category-size) * 3);
 }
 
-.categories-slider--travel-places {
+.categories-slider--activities {
   left: calc(var(--category-margin) * 9 + var(--category-size) * 4);
 }
 
-.categories-slider--activities {
+.categories-slider--objects {
   left: calc(var(--category-margin) * 11 + var(--category-size) * 5);
 }
 
-.categories-slider--objects {
+.categories-slider--symbols {
   left: calc(var(--category-margin) * 13 + var(--category-size) * 6);
 }
 
-.categories-slider--symbols {
-  left: calc(var(--category-margin) * 15 + var(--category-size) * 7);
-}
-
 .categories-slider--flags {
-  left: calc(var(--category-margin) * 17 + var(--category-size) * 8);
+  left: calc(var(--category-margin) * 15 + var(--category-size) * 7);
 }
 
 .category {
@@ -251,8 +247,14 @@
 }
 
 .emoji {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   font-size: var(--emoji-size);
   padding: var(--emoji-padding);
+  width: calc(var(--emoji-size) + var(--emoji-padding) * 2);
+  height: calc(var(--emoji-size) + var(--emoji-padding) * 2);
   border-radius: 50%;
   cursor: pointer;
   user-select: none;

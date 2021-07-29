@@ -1,40 +1,8 @@
 import React from 'react';
 import Category from '../components/Category';
 import classes from '../styles/emoji-picker.module.css';
-import { CategoriesListProps } from '../types';
+import { CategoriesListProps } from '../types/props';
 import { capitalize } from '../utils/strings';
-import {
-  IoHappyOutline,
-  IoHappy,
-  IoHandLeftOutline,
-  IoHandLeft,
-  IoLeafOutline,
-  IoLeaf,
-  IoFastFoodOutline,
-  IoFastFood,
-  IoAirplaneOutline,
-  IoAirplane,
-  IoFootballOutline,
-  IoFootball,
-  IoHeadsetOutline,
-  IoHeadset,
-  IoAlertCircleOutline,
-  IoAlertCircle,
-  IoFlagOutline,
-  IoFlag,
-} from 'react-icons/io5';
-
-const icons = [
-  [IoHappyOutline, IoHappy],
-  [IoHandLeftOutline, IoHandLeft],
-  [IoLeafOutline, IoLeaf],
-  [IoFastFoodOutline, IoFastFood],
-  [IoAirplaneOutline, IoAirplane],
-  [IoFootballOutline, IoFootball],
-  [IoHeadsetOutline, IoHeadset],
-  [IoAlertCircleOutline, IoAlertCircle],
-  [IoFlagOutline, IoFlag],
-];
 
 const CategoriesList: React.FC<CategoriesListProps> = ({
   items,
@@ -43,18 +11,18 @@ const CategoriesList: React.FC<CategoriesListProps> = ({
 }) => {
   return (
     <div className={classes['categories-list']}>
-      {items.map((category, index) => {
+      {items.map(([name, [IconOutlined, IconFilled]], index) => {
         return (
           <Category
             key={index}
-            IconOutlined={icons[index][0]}
-            IconFilled={icons[index][1]}
-            isSelected={selected === category}
-            onSelect={() => onCategorySelect(category)}
-            title={category
-              .split('-')
+            IconOutlined={IconOutlined}
+            IconFilled={IconFilled}
+            isSelected={selected === name}
+            onSelect={() => onCategorySelect(name)}
+            title={name
+              .split('_')
               .map(w => capitalize(w))
-              .join(' & ')}
+              .join(' ')}
           />
         );
       })}

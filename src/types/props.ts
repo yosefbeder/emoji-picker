@@ -1,32 +1,22 @@
+import { CSSProperties } from 'react';
 import { IconType } from 'react-icons/lib';
+import { CategoryType, EmojiType } from './data';
+
+// this type will be improved when i add skin tones
+export interface EmojiObjType {
+  emoji: string;
+  name: string;
+}
 
 export interface EmojiPickerProps {
   theme?: 'light' | 'dark';
   size?: 'sm' | 'med' | 'lg';
-}
-
-export type CategoryType =
-  | 'smileys-emotion'
-  | 'people-body'
-  | 'animals-nature'
-  | 'food-drink'
-  | 'travel-places'
-  | 'activities'
-  | 'objects'
-  | 'symbols'
-  | 'flags';
-
-export interface EmojiType {
-  slug: string;
-  character: string;
-  unicodeName: string;
-  codePoint: string;
-  group: string;
-  subGroup: string;
+  style?: CSSProperties;
+  onEmojiClick: (emojiObj: EmojiObjType) => void;
 }
 
 export interface CategoriesListProps {
-  items: CategoryType[];
+  items: [CategoryType, [IconType, IconType]][];
   selected: CategoryType;
   onCategorySelect: (category: CategoryType) => void;
 }
@@ -45,6 +35,7 @@ export interface SearchbarProps {
 
 export interface EmojisListProps {
   items: EmojiType[];
+  onEmojiClick: (emojiObj: EmojiObjType) => void;
 }
 
 export interface EmojiProps {
