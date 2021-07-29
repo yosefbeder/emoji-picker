@@ -8,7 +8,7 @@
 
 const typescriptify = (data, type) => {
   return `
-  import { ${type.name} } from '${type.path}';
+  import { ${type.name} } from '${type.path}';\n
   // eslint-disable-next-line import/no-anonymous-default-export\n
   export default ${data} as ${type.name};
   `;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // For testing purpose
 import ReactDOM from 'react-dom';
 
@@ -13,6 +13,7 @@ import { CategoryType } from './types/data';
 // data
 import categories from './data/categories';
 import emojisByCategory from './data/emojis-by-category';
+import allEmojis from './data/all-emojis';
 
 import {
   IoHappyOutline,
@@ -33,6 +34,7 @@ import {
   IoFlag,
 } from 'react-icons/io5';
 import emojisObj from './data/emojis-obj';
+import { getRegex } from './utils/regex';
 
 const icons = [
   [IoHappyOutline, IoHappy],
@@ -45,6 +47,15 @@ const icons = [
   [IoFlagOutline, IoFlag],
 ];
 
+const getEmojiObjs = (emojis: string[]) => {
+  return emojis.map(emoji => {
+    return {
+      u: emojisObj[emoji].u,
+      n: emoji,
+    };
+  });
+};
+
 const EmojiPicker: React.FC<EmojiPickerProps> = ({
   theme = 'light',
   size = 'med',
@@ -55,6 +66,24 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
 
   const onCategorySelect = (category: CategoryType) =>
     setSelectedCategory(category);
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredEmojis, setFilteredEmojis] = useState<string[]>([]);
+
+  const onSearch = (query: string) => {
+    const regex = getRegex(query);
+
+    setFilteredEmojis(allEmojis.filter(emoji => regex.test(emoji)));
+  };
+
+  useEffect(() => {
+    if (searchQuery) {
+      const timer = setTimeout(() => onSearch(searchQuery), 500);
+      return () => clearTimeout(timer);
+    } else {
+      setFilteredEmojis([]);
+    }
+  }, [searchQuery]);
 
   return (
     <div
@@ -70,14 +99,16 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
         selected={selectedCategory}
         onCategorySelect={onCategorySelect}
       />
-      <Searchbar onSearch={emojiName => console.log(emojiName)} />
+      <Searchbar
+        value={searchQuery}
+        onValueChange={e => setSearchQuery(e.target.value)}
+      />
       <EmojisList
-        items={emojisByCategory[selectedCategory].map(emoji => {
-          return {
-            u: emojisObj[emoji].u,
-            n: emoji,
-          };
-        })}
+        items={
+          searchQuery
+            ? getEmojiObjs(filteredEmojis)
+            : getEmojiObjs(emojisByCategory[selectedCategory])
+        }
         onEmojiClick={onEmojiClick}
       />
     </div>

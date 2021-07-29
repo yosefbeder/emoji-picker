@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import React, { CSSProperties } from 'react';
 import { IconType } from 'react-icons/lib';
 import { CategoryType, EmojiType } from './data';
 
@@ -30,7 +30,8 @@ export interface CategoryProps {
 }
 
 export interface SearchbarProps {
-  onSearch: (emojiName: string) => void;
+  value: string;
+  onValueChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface EmojisListProps {

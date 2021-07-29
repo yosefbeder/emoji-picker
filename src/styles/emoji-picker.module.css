@@ -95,7 +95,7 @@
   --searchbar-margin: var(--space-lg);
 
   --emoji-size: 1.5rem;
-  --emoji-padding: var(--space-sm);
+  --emoji-padding: var(--space-med);
   --emojis-gap: var(--space-sm);
   --emojis-per-line: 8;
 }
@@ -235,8 +235,11 @@
 
   padding: var(--space-lg) 0;
   width: 100%;
-  grid-template-columns: repeat(var(--emojis-per-line), max-content);
-  grid-auto-rows: max-content;
+  grid-template-columns: repeat(
+    var(--emojis-per-line),
+    calc(var(--emoji-size) + var(--emoji-padding) * 2)
+  );
+  grid-auto-rows: calc(var(--emoji-size) + var(--emoji-padding) * 2);
   grid-gap: var(--emojis-gap);
 
   overflow-x: hidden;
@@ -253,8 +256,7 @@
 
   font-size: var(--emoji-size);
   padding: var(--emoji-padding);
-  width: calc(var(--emoji-size) + var(--emoji-padding) * 2);
-  height: calc(var(--emoji-size) + var(--emoji-padding) * 2);
+
   border-radius: 50%;
   cursor: pointer;
   user-select: none;
