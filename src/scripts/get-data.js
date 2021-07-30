@@ -38,9 +38,15 @@ const getEmojiUnicode = s => {
 
 categories.forEach(category => {
   emojis[category].forEach(emoji => {
-    emojisObj[emoji.n[emoji.n.length - 1]] = {
-      u: getEmojiUnicode(emoji.u),
-    };
+    let v = [getEmojiUnicode(emoji.u)];
+
+    if (emoji.v) {
+      emoji.v.forEach(c => {
+        v.push(getEmojiUnicode(c));
+      });
+    }
+
+    emojisObj[emoji.n[emoji.n.length - 1]] = { v };
   });
 });
 

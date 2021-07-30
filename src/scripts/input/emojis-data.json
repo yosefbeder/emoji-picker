@@ -1407,7 +1407,7 @@
       "n": ["kissing face with closed eyes", "kissing_closed_eyes"],
       "u": "1f61a"
     },
-    { "n": ["white smiling face", "relaxed"], "u": "263a-fe0f" },
+    { "n": ["white smiling face", "relaxed"], "u": "1f60c" },
     { "n": ["slightly smiling face", "slightly_smiling_face"], "u": "1f642" },
     { "n": ["hugging face", "hugging_face"], "u": "1f917" },
     {
@@ -1539,11 +1539,7 @@
       "u": "1f92b"
     },
     {
-      "n": [
-        "smiling face with smiling eyes and hand covering mouth",
-        "face_with_hand_over_mouth",
-        "smiling_face_with_smiling_eyes_and_hand_covering_mouth"
-      ],
+      "n": ["smiling face with smiling eyes", "face_with_hand_over_mouth"],
       "u": "1f92d"
     },
     { "n": ["face with monocle", "face_with_monocle"], "u": "1f9d0" },

@@ -9,20 +9,25 @@
 }
 
 .container {
-  --color-main: #2f51d2;
-  --color-main-transparent: #2f51d250;
+  --main-hue: 180;
 
-  --color-black: #242a42;
-  --color-black-transparent-1: #242a4288;
-  --color-black-transparent-2: #242a4230;
+  --color-main: hsl(var(--main-hue), 65%, 50%);
+  --color-main-transparent: hsla(var(--main-hue), 65%, 50%, 0.25);
+
+  --color-black: hsl(var(--main-hue), 30%, 20%);
+  --color-black-transparent-1: hsla(var(--main-hue), 30%, 30%, 0.8);
+  --color-black-transparent-2: hsla(var(--main-hue), 30%, 30%, 0.5);
 
   --color-white: #fff;
   --color-white-transparent: #fffb;
 
-  --color-grey-darker: #3d496e;
-  --color-grey-dark: #818bb4;
-  --color-grey-light: #d8def3;
-  --color-grey-lighter: #ebeef9;
+  --color-grey-darker: hsl(var(--main-hue), 30%, 30%);
+  --color-grey-dark: hsl(var(--main-hue), 40%, 40%);
+
+  --color-grey: hsl(var(--main-hue), 55%, 70%);
+
+  --color-grey-light: hsl(var(--main-hue), 55%, 85%);
+  --color-grey-lighter: hsl(var(--main-hue), 45%, 95%);
 
   --space-sm: 0.2rem;
   --space-med: 0.4rem;
@@ -42,10 +47,11 @@
 
   --searchbar-color: var(--color-black);
 
-  --emoji-color: var(--color-grey-lighter);
-  --emoji-color-emphasize: var(--color-grey-light);
+  --emoji-color: var(--color-grey-light);
+  --emoji-color-emphasize: var(--color-grey);
 
   --border-color: var(--color-grey-dark);
+  --hovered-emoji-color: var(--color-grey-darker);
 }
 
 .container--dark-theme {
@@ -60,10 +66,10 @@
 
   --searchbar-color: var(--color-white);
 
-  --emoji-color: var(--color-grey-darker);
-  --emoji-color-emphasize: var(--color-grey-dark);
+  --emoji-color: var(--color-grey-dark);
+  --emoji-color-emphasize: var(--color-grey);
 
-  --border-color: var(--color-grey-dark);
+  --border-color: var(--color-grey-light);
 }
 
 .container--sm-size {
@@ -80,7 +86,7 @@
   --emoji-size: 1.4rem;
   --emoji-padding: var(--space-sm);
   --emojis-gap: var(--space-sm);
-  --emojis-per-line: 7;
+  --emojis-per-line: 8;
 }
 
 .container--med-size {
@@ -98,6 +104,9 @@
   --emoji-padding: var(--space-med);
   --emojis-gap: var(--space-sm);
   --emojis-per-line: 8;
+
+  --footer-height: 2.1rem;
+  --footer-padding: var(--space-sm);
 }
 
 .container--lg-size {
@@ -148,6 +157,8 @@
 
   height: 3px;
   width: var(--category-size);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 
   background-color: var(--slider-color);
 
@@ -227,13 +238,12 @@
 
 .emojis-list {
   flex: 1;
-  background-color: var(--primary-bg-color);
-  border-top: var(--border-thin);
+  /* background-color: var(--primary-bg-color); */
+  /* border-top: var(--border-thin); */
 
   display: grid;
   justify-content: center;
 
-  padding: var(--space-lg) 0;
   width: 100%;
   grid-template-columns: repeat(
     var(--emojis-per-line),
@@ -269,4 +279,58 @@
 
 .emoji:active {
   background-color: var(--emoji-color-emphasize);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--footer-padding);
+
+  height: var(--footer-height);
+  border-top: var(--border-thin);
+  background-color: var(--color-white);
+}
+
+.hovered-emoji {
+  flex: 1;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--hovered-emoji-color);
+}
+
+.skin-tone-selector {
+  flex: 0.75;
+  display: flex;
+  justify-content: space-between;
+}
+
+.skin-tone {
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+  transition: transform 200ms;
+}
+
+.skin-tone--selected {
+  transform: scale(1.25);
+}
+
+.skin-tone--0 {
+  background-color: #fbba08;
+}
+.skin-tone--1 {
+  background-color: #ffdbac;
+}
+.skin-tone--2 {
+  background-color: #f1c27d;
+}
+.skin-tone--3 {
+  background-color: #e0ac69;
+}
+.skin-tone--4 {
+  background-color: #c68642;
+}
+.skin-tone--5 {
+  background-color: #8d5524;
 }

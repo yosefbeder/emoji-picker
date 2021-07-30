@@ -9,12 +9,12 @@ export type CategoryType =
   | 'flags';
 
 export interface EmojiType {
+  v: string[];
   n: string;
-  u: string;
 }
 
 export interface EmojisObjType {
-  [emojiName: string]: { u: string };
+  [emojiName: string]: { v: string[] };
 }
 
 export interface EmojisByCategoryType {

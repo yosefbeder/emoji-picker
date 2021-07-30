@@ -12,6 +12,7 @@ export interface EmojiPickerProps {
   theme?: 'light' | 'dark';
   size?: 'sm' | 'med' | 'lg';
   style?: CSSProperties;
+  autoFocus?: boolean;
   onEmojiClick: (emojiObj: EmojiObjType) => void;
 }
 
@@ -36,10 +37,26 @@ export interface SearchbarProps {
 
 export interface EmojisListProps {
   items: EmojiType[];
+  selectedSkinTone: number;
   onEmojiClick: (emojiObj: EmojiObjType) => void;
+  onEmojiMouseEnter: (emojiName: string) => void;
+  onEmojiMouseLeave: () => void;
 }
 
 export interface EmojiProps {
   unicode: string;
-  onEmojiClick: () => void;
+  onClick: () => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}
+
+export interface FooterProps {
+  hoveredEmoji: string;
+  setSelectedSkinTone: React.Dispatch<React.SetStateAction<number>>;
+  selectedSkinTone: number;
+}
+
+export interface SkinToneSelectorProps {
+  setSelectedSkinTone: React.Dispatch<React.SetStateAction<number>>;
+  selectedSkinTone: number;
 }

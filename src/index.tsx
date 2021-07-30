@@ -6,6 +6,7 @@ import classes from './styles/emoji-picker.module.css';
 import CategoriesList from './containers/CategoriesList';
 import Searchbar from './components/Searchbar';
 import EmojisList from './containers/EmojisList';
+import Footer from './components/Footer';
 
 import { EmojiPickerProps } from './types/props';
 import { CategoryType } from './types/data';
@@ -35,6 +36,7 @@ import {
 } from 'react-icons/io5';
 import emojisObj from './data/emojis-obj';
 import { getRegex } from './utils/regex';
+import { useRef } from 'react';
 
 const icons = [
   [IoHappyOutline, IoHappy],
@@ -50,7 +52,7 @@ const icons = [
 const getEmojiObjs = (emojis: string[]) => {
   return emojis.map(emoji => {
     return {
-      u: emojisObj[emoji].u,
+      v: emojisObj[emoji].v,
       n: emoji,
     };
   });
@@ -60,13 +62,17 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
   theme = 'light',
   size = 'med',
   onEmojiClick,
+  style,
+  autoFocus = true,
 }) => {
+  // Filtering emojis by category logic
   const [selectedCategory, setSelectedCategory] =
     useState<CategoryType>('smileys_people');
 
   const onCategorySelect = (category: CategoryType) =>
     setSelectedCategory(category);
 
+  // Searching logic
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredEmojis, setFilteredEmojis] = useState<string[]>([]);
 
@@ -77,19 +83,33 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
   };
 
   useEffect(() => {
-    if (searchQuery) {
-      const timer = setTimeout(() => onSearch(searchQuery), 500);
-      return () => clearTimeout(timer);
-    } else {
-      setFilteredEmojis([]);
-    }
+    if (!searchQuery) setFilteredEmojis([]);
+    else onSearch(searchQuery);
   }, [searchQuery]);
+
+  // Auto focusing logic
+  const searchbarRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (autoFocus) searchbarRef.current!.focus();
+  }, []);
+
+  // hovered emoji
+  const [hoveredEmoji, setHoveredEmoji] = useState('');
+
+  const onEmojiMouseEnter = (emojiName: string) => setHoveredEmoji(emojiName);
+
+  const onEmojiMouseLeave = () => setHoveredEmoji('');
+
+  // tones
+  const [selectedSkinTone, setSelectedSkinTone] = useState(4);
 
   return (
     <div
       className={`${classes['container']} ${
         classes[`container--${theme}-theme`]
       } ${classes[`container--${size}-size`]}`}
+      style={style}
     >
       <CategoriesList
         items={categories.map((category, index) => [
@@ -102,14 +122,23 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
       <Searchbar
         value={searchQuery}
         onValueChange={e => setSearchQuery(e.target.value)}
+        ref={searchbarRef}
       />
       <EmojisList
+        selectedSkinTone={selectedSkinTone}
         items={
           searchQuery
             ? getEmojiObjs(filteredEmojis)
             : getEmojiObjs(emojisByCategory[selectedCategory])
         }
         onEmojiClick={onEmojiClick}
+        onEmojiMouseEnter={onEmojiMouseEnter}
+        onEmojiMouseLeave={onEmojiMouseLeave}
+      />
+      <Footer
+        hoveredEmoji={hoveredEmoji}
+        setSelectedSkinTone={setSelectedSkinTone}
+        selectedSkinTone={selectedSkinTone}
       />
     </div>
   );
