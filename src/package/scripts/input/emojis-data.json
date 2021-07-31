@@ -1508,8 +1508,7 @@
     {
       "n": [
         "serious face with symbols covering mouth",
-        "face_with_symbols_on_mouth",
-        "serious_face_with_symbols_covering_mouth"
+        "face_with_symbols_on_mouth"
       ],
       "u": "1f92c"
     },
@@ -1531,11 +1530,7 @@
     { "n": ["clown face", "clown_face"], "u": "1f921" },
     { "n": ["lying face", "lying_face"], "u": "1f925" },
     {
-      "n": [
-        "face with finger covering closed lips",
-        "shushing_face",
-        "face_with_finger_covering_closed_lips"
-      ],
+      "n": ["face with finger covering closed lips", "shushing_face"],
       "u": "1f92b"
     },
     {

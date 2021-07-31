@@ -13,6 +13,7 @@ export interface EmojiPickerProps {
   size?: 'sm' | 'med' | 'lg';
   style?: CSSProperties;
   autoFocus?: boolean;
+  defaultSkinTone?: number;
   onEmojiClick: (emojiObj: EmojiObjType) => void;
 }
 

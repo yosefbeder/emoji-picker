@@ -2,6 +2,7 @@ import React from 'react';
 import Emoji from '../components/Emoji';
 import classes from '../styles/emoji-picker.module.css';
 import { EmojisListProps } from '../types/props';
+import { normalize } from '../utils/strings';
 
 const EmojisList: React.FC<EmojisListProps> = ({
   selectedSkinTone,
@@ -12,18 +13,20 @@ const EmojisList: React.FC<EmojisListProps> = ({
 }) => {
   return (
     <div className={classes['emojis-list']}>
-      {items.map(({ v, n }, index) => {
-        let u: string;
+      {items.map(({ name, variants }, index) => {
+        let unicode: string;
 
-        if (v.length === 1) u = v[0];
-        else u = v[selectedSkinTone];
+        if (variants.length === 1) unicode = variants[0];
+        else unicode = variants[selectedSkinTone];
 
         return (
           <Emoji
             key={index}
-            unicode={u}
-            onClick={() => onEmojiClick({ emoji: u, name: n })}
-            onMouseEnter={() => onEmojiMouseEnter(n)}
+            unicode={unicode}
+            onClick={() =>
+              onEmojiClick({ emoji: unicode, name: normalize(name) })
+            }
+            onMouseEnter={() => onEmojiMouseEnter(name)}
             onMouseLeave={onEmojiMouseLeave}
           />
         );
