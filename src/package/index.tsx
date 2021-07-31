@@ -9,7 +9,7 @@ import { EmojiPickerProps } from './types/props';
 import { CategoryType } from './types/data';
 
 // data
-import categories from './data/categories';
+import allCategories from './data/categories';
 import emojisByCategory from './data/emojis-by-category';
 import allEmojis from './data/all-emojis';
 
@@ -36,18 +36,19 @@ import {
 import emojisObj from './data/emojis-obj';
 import { getRegex } from './utils/regex';
 import { useRef } from 'react';
+import { IconType } from 'react-icons/lib';
 
-const icons = [
-  [IoTimeOutline, IoTime],
-  [IoHappyOutline, IoHappy],
-  [IoLeafOutline, IoLeaf],
-  [IoFastFoodOutline, IoFastFood],
-  [IoAirplaneOutline, IoAirplane],
-  [IoFootballOutline, IoFootball],
-  [IoHeadsetOutline, IoHeadset],
-  [IoAlertCircleOutline, IoAlertCircle],
-  [IoFlagOutline, IoFlag],
-];
+const icons = new Map<CategoryType, [IconType, IconType]>([
+  ['recently-used', [IoTimeOutline, IoTime]],
+  ['smileys_people', [IoHappyOutline, IoHappy]],
+  ['animals_nature', [IoLeafOutline, IoLeaf]],
+  ['food_drink', [IoFastFoodOutline, IoFastFood]],
+  ['travel_places', [IoAirplaneOutline, IoAirplane]],
+  ['activities', [IoFootballOutline, IoFootball]],
+  ['objects', [IoHeadsetOutline, IoHeadset]],
+  ['symbols', [IoAlertCircleOutline, IoAlertCircle]],
+  ['flags', [IoFlagOutline, IoFlag]],
+]);
 
 const getEmojiObjs = (emojis: string[]) => {
   return emojis.map(emoji => {
@@ -57,6 +58,8 @@ const getEmojiObjs = (emojis: string[]) => {
     };
   });
 };
+
+// Recently used
 
 const getRecentlyUsedFromLocalStorage = () => {
   const fromLocalStorage = localStorage.getItem('recently-used');
@@ -81,16 +84,29 @@ const setRecentlyUsedToLocalStorage = (newRecentlyUsed: string[]) =>
   localStorage.setItem('recently-used', JSON.stringify(newRecentlyUsed));
 
 const EmojiPicker: React.FC<EmojiPickerProps> = ({
+  onEmojiClick,
   theme = 'light',
   size = 'med',
-  onEmojiClick,
   style,
-  defaultSkinTone = 0,
   autoFocus = true,
+  defaultSkinTone = 0,
+  exclude = [],
 }) => {
+  // Excluding categories
+  const [categories, _] = useState<CategoryType[]>(() => {
+    let result: CategoryType[] = [];
+
+    allCategories.forEach(category => {
+      if (!exclude.includes(category)) result.push(category);
+    });
+
+    return result;
+  });
+
   // Filtering emojis by category logic
-  const [selectedCategory, setSelectedCategory] =
-    useState<CategoryType>('smileys_people');
+  const [selectedCategory, setSelectedCategory] = useState<CategoryType>(
+    categories[0],
+  );
 
   const onCategorySelect = (category: CategoryType) =>
     setSelectedCategory(category);
@@ -117,17 +133,17 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
     if (autoFocus) searchbarRef.current!.focus();
   }, []);
 
-  // hovered emoji
+  // Hovered emoji
   const [hoveredEmoji, setHoveredEmoji] = useState('');
 
   const onEmojiMouseEnter = (emojiName: string) => setHoveredEmoji(emojiName);
 
   const onEmojiMouseLeave = () => setHoveredEmoji('');
 
-  // tones
+  // Tones
   const [selectedSkinTone, setSelectedSkinTone] = useState(defaultSkinTone);
 
-  // recently used emojis
+  // Recently used
   const [recentlyUsed, setRecentlyUsed] = useState<string[]>(() =>
     getRecentlyUsedFromLocalStorage(),
   );
@@ -149,7 +165,7 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
       <CategoriesList
         items={categories.map((category, index) => [
           category,
-          [icons[index][0], icons[index][1]],
+          [icons.get(category)![0], icons.get(category)![1]],
         ])}
         selected={selectedCategory}
         onCategorySelect={onCategorySelect}

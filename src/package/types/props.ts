@@ -14,6 +14,7 @@ export interface EmojiPickerProps {
   style?: CSSProperties;
   autoFocus?: boolean;
   defaultSkinTone?: number;
+  exclude?: CategoryType[];
   onEmojiClick: (emojiObj: EmojiObjType) => void;
 }
 

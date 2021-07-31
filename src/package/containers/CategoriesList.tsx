@@ -29,7 +29,12 @@ const CategoriesList: React.FC<CategoriesListProps> = ({
 
       <div
         className={`${classes['categories-slider']} ${
-          classes[`categories-slider--${selected}`]
+          classes[
+            `categories-slider--${Array.from(
+              { length: items.length },
+              (_, i) => items[i][0],
+            ).indexOf(selected)}`
+          ]
         }`}
       />
     </div>

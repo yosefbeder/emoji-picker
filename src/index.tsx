@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
 
-import EmojiPicker from './package';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <EmojiPicker onEmojiClick={emojiObj => console.log(emojiObj)} />
+    <App />
   </React.StrictMode>,
   document.getElementById('root'),
 );
