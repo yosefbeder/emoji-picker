@@ -23,9 +23,10 @@ const EmojisList: React.FC<EmojisListProps> = ({
           <Emoji
             key={index}
             unicode={unicode}
-            onClick={() =>
-              onEmojiClick({ emoji: unicode, name: normalize(name) })
-            }
+            onClick={() => {
+              onEmojiClick[0]({ emoji: unicode, name: normalize(name) });
+              onEmojiClick[1](name);
+            }}
             onMouseEnter={() => onEmojiMouseEnter(name)}
             onMouseLeave={onEmojiMouseLeave}
           />

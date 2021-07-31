@@ -30,12 +30,15 @@ import {
   IoAlertCircle,
   IoFlagOutline,
   IoFlag,
+  IoTimeOutline,
+  IoTime,
 } from 'react-icons/io5';
 import emojisObj from './data/emojis-obj';
 import { getRegex } from './utils/regex';
 import { useRef } from 'react';
 
 const icons = [
+  [IoTimeOutline, IoTime],
   [IoHappyOutline, IoHappy],
   [IoLeafOutline, IoLeaf],
   [IoFastFoodOutline, IoFastFood],
@@ -54,6 +57,28 @@ const getEmojiObjs = (emojis: string[]) => {
     };
   });
 };
+
+const getRecentlyUsedFromLocalStorage = () => {
+  const fromLocalStorage = localStorage.getItem('recently-used');
+  const recentlyUsed = fromLocalStorage ? JSON.parse(fromLocalStorage) : [];
+  return recentlyUsed;
+};
+
+const getNewRecentlyUsed = (oldRecentlyUsed: string[], newItem: string) => {
+  if (oldRecentlyUsed.includes(newItem)) {
+    const index = oldRecentlyUsed.indexOf(newItem);
+    return [
+      newItem,
+      ...oldRecentlyUsed.slice(0, index),
+      ...oldRecentlyUsed.slice(index + 1),
+    ];
+  } else {
+    return [newItem, ...oldRecentlyUsed];
+  }
+};
+
+const setRecentlyUsedToLocalStorage = (newRecentlyUsed: string[]) =>
+  localStorage.setItem('recently-used', JSON.stringify(newRecentlyUsed));
 
 const EmojiPicker: React.FC<EmojiPickerProps> = ({
   theme = 'light',
@@ -102,6 +127,18 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
   // tones
   const [selectedSkinTone, setSelectedSkinTone] = useState(defaultSkinTone);
 
+  // recently used emojis
+  const [recentlyUsed, setRecentlyUsed] = useState<string[]>(() =>
+    getRecentlyUsedFromLocalStorage(),
+  );
+
+  const pushToRecentlyUsed = (emojiName: string) => {
+    const newRecentlyUsed = getNewRecentlyUsed(recentlyUsed, emojiName);
+
+    setRecentlyUsed(newRecentlyUsed);
+    setRecentlyUsedToLocalStorage(newRecentlyUsed);
+  };
+
   return (
     <div
       className={`${classes['container']} ${
@@ -127,9 +164,11 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
         items={
           searchQuery
             ? getEmojiObjs(filteredEmojis)
+            : selectedCategory === 'recently-used'
+            ? getEmojiObjs(recentlyUsed)
             : getEmojiObjs(emojisByCategory[selectedCategory])
         }
-        onEmojiClick={onEmojiClick}
+        onEmojiClick={[onEmojiClick, pushToRecentlyUsed]}
         onEmojiMouseEnter={onEmojiMouseEnter}
         onEmojiMouseLeave={onEmojiMouseLeave}
       />

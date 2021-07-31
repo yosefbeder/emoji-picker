@@ -22,7 +22,7 @@ const CategoriesList: React.FC<CategoriesListProps> = ({
             title={name
               .split('_')
               .map(w => capitalize(w))
-              .join(' ')}
+              .join(' & ')}
           />
         );
       })}

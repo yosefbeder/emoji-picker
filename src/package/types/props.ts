@@ -39,7 +39,7 @@ export interface SearchbarProps {
 export interface EmojisListProps {
   items: EmojiType[];
   selectedSkinTone: number;
-  onEmojiClick: (emojiObj: EmojiObjType) => void;
+  onEmojiClick: [(emojiObj: EmojiObjType) => void, (emojiName: string) => void];
   onEmojiMouseEnter: (emojiName: string) => void;
   onEmojiMouseLeave: () => void;
 }

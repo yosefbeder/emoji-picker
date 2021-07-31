@@ -1,4 +1,5 @@
 export type CategoryType =
+  | 'recently-used'
   | 'smileys_people'
   | 'animals_nature'
   | 'food_drink'

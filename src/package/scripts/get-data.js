@@ -89,7 +89,7 @@ fs.writeFileSync(
 // categories
 fs.writeFileSync(
   path.resolve(__dirname, '../data/categories.ts'),
-  typescriptify(JSON.stringify(categories), {
+  typescriptify(JSON.stringify(['recently-used', ...categories]), {
     name: 'CategoriesType',
     path: dataTypesPath,
   }),

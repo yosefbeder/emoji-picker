@@ -90,6 +90,7 @@
 
   --footer-font-size: 0.7rem;
   --skin-tone-size: 0.8rem;
+  --skin-tones-gap: 0.4rem;
 }
 
 .container--med-size {
@@ -108,6 +109,7 @@
 
   --footer-font-size: 0.8rem;
   --skin-tone-size: 1rem;
+  --skin-tones-gap: 0.5rem;
 }
 
 .container--lg-size {
@@ -126,6 +128,7 @@
 
   --footer-font-size: 0.9rem;
   --skin-tone-size: 1.2rem;
+  --skin-tones-gap: 0.6rem;
 }
 
 .container {
@@ -169,36 +172,40 @@
   transition: left 200ms;
 }
 
-.categories-slider--smileys_people {
+.categories-slider--recently-used {
   left: var(--category-margin);
 }
 
-.categories-slider--animals_nature {
+.categories-slider--smileys_people {
   left: calc(var(--category-margin) * 3 + var(--category-size));
 }
 
-.categories-slider--food_drink {
+.categories-slider--animals_nature {
   left: calc(var(--category-margin) * 5 + var(--category-size) * 2);
 }
 
-.categories-slider--travel_places {
+.categories-slider--food_drink {
   left: calc(var(--category-margin) * 7 + var(--category-size) * 3);
 }
 
-.categories-slider--activities {
+.categories-slider--travel_places {
   left: calc(var(--category-margin) * 9 + var(--category-size) * 4);
 }
 
-.categories-slider--objects {
+.categories-slider--activities {
   left: calc(var(--category-margin) * 11 + var(--category-size) * 5);
 }
 
-.categories-slider--symbols {
+.categories-slider--objects {
   left: calc(var(--category-margin) * 13 + var(--category-size) * 6);
 }
 
-.categories-slider--flags {
+.categories-slider--symbols {
   left: calc(var(--category-margin) * 15 + var(--category-size) * 7);
+}
+
+.categories-slider--flags {
+  left: calc(var(--category-margin) * 17 + var(--category-size) * 8);
 }
 
 .category {
@@ -301,7 +308,6 @@
 }
 
 .skin-tone-selector {
-  flex: 0.75;
   display: flex;
   justify-content: space-between;
 }
@@ -312,6 +318,10 @@
   height: var(--skin-tone-size);
   cursor: pointer;
   transition: transform 200ms;
+}
+
+.skin-tone:not(:last-child) {
+  margin-right: var(--skin-tones-gap);
 }
 
 .skin-tone--selected {
