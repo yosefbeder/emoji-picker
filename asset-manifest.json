@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/emoji-picker/static/css/main.8d7c6ecb.chunk.css",
+    "main.js": "/emoji-picker/static/js/main.38b0d81e.chunk.js",
+    "main.js.map": "/emoji-picker/static/js/main.38b0d81e.chunk.js.map",
+    "runtime-main.js": "/emoji-picker/static/js/runtime-main.24c5a759.js",
+    "runtime-main.js.map": "/emoji-picker/static/js/runtime-main.24c5a759.js.map",
+    "static/js/2.22efd253.chunk.js": "/emoji-picker/static/js/2.22efd253.chunk.js",
+    "static/js/2.22efd253.chunk.js.map": "/emoji-picker/static/js/2.22efd253.chunk.js.map",
+    "index.html": "/emoji-picker/index.html",
+    "static/css/main.8d7c6ecb.chunk.css.map": "/emoji-picker/static/css/main.8d7c6ecb.chunk.css.map",
+    "static/js/2.22efd253.chunk.js.LICENSE.txt": "/emoji-picker/static/js/2.22efd253.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.24c5a759.js",
+    "static/js/2.22efd253.chunk.js",
+    "static/css/main.8d7c6ecb.chunk.css",
+    "static/js/main.38b0d81e.chunk.js"
+  ]
+}
