@@ -6,6 +6,7 @@ import { CategoryType, EmojiType } from './data';
 export interface EmojiObjType {
   emoji: string;
   name: string;
+  skinTone: number;
 }
 
 export interface EmojiPickerProps {
@@ -54,6 +55,7 @@ export interface EmojiProps {
 
 export interface FooterProps {
   hoveredEmoji: string;
+  showHoveredEmoji: boolean;
   setSelectedSkinTone: React.Dispatch<React.SetStateAction<number>>;
   selectedSkinTone: number;
 }

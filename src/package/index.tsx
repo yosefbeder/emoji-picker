@@ -109,7 +109,7 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
         if (!exclude.includes(category)) result.push(category);
       });
   
-      if(result.includes(selectedCategory)) setSelectedCategory(result[0])
+      if(!result.includes(selectedCategory)) setSelectedCategory(result[0])
     
       setCategories(result);
     }, [exclude])
@@ -194,6 +194,7 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
         onEmojiMouseLeave={onEmojiMouseLeave}
       />
       <Footer
+        showHoveredEmoji={exclude.length < 2}
         hoveredEmoji={hoveredEmoji}
         setSelectedSkinTone={setSelectedSkinTone}
         selectedSkinTone={selectedSkinTone}

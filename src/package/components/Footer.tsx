@@ -36,9 +36,10 @@ const Footer: React.FC<FooterProps> = ({
   hoveredEmoji,
   setSelectedSkinTone,
   selectedSkinTone,
+  showHoveredEmoji
 }) => {
   return (
-    <div className={classes.footer}>
+    <div className={`${classes.footer} ${showHoveredEmoji? '': classes['footer--skin-tone-selector-only']}`}>
       <div className={classes['hovered-emoji']}>
         {normalize(hoveredEmoji) || 'no emoji is hovered'}
       </div>

@@ -292,18 +292,28 @@
 }
 
 .footer {
+  position: relative;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   padding: 0 var(--footer-padding);
   font-size: var(--footer-font-size);
-
   height: var(--footer-height);
   border-top: var(--border-thin);
   background-color: var(--primary-bg-color);
 }
 
+.footer--skin-tone-selector-only .hovered-emoji {
+  display: none;
+}
+
+.footer--skin-tone-selector-only {
+  justify-content: center;
+}
+
 .hovered-emoji {
-  flex: 1;
+  position: absolute;
+  left: var(--footer-padding);
   font-weight: 600;
   color: var(--hovered-emoji-color);
 }
@@ -312,6 +322,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 
 .skin-tone {
   border-radius: 50%;

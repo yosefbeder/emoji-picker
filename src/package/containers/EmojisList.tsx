@@ -24,7 +24,7 @@ const EmojisList: React.FC<EmojisListProps> = ({
             key={index}
             unicode={unicode}
             onClick={() => {
-              onEmojiClick[0]({ emoji: unicode, name: normalize(name) });
+              onEmojiClick[0]({ emoji: unicode, name: normalize(name), skinTone: variants.length === 1? 0: selectedSkinTone });
               onEmojiClick[1](name);
             }}
             onMouseEnter={() => onEmojiMouseEnter(name)}
