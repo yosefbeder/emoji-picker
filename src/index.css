@@ -12,8 +12,18 @@
   width: 100%;
   justify-content: center;
   padding: 1rem 0;
-  grid-template-columns: 25.5rem;
-  grid-template-rows: max-content 30rem repeat(2, max-content);
+  grid-template-columns: repeat(2, 25.5rem);
+  grid-template-rows: repeat(2, max-content);
+  grid-auto-flow: column;
   grid-row-gap: 1rem;
   justify-items: center;
+}
+
+@media (max-width: 51rem) {
+  .app {
+    grid-template-columns: 25.5rem;
+    grid-template-rows: max-content 30rem repeat(2, max-content);
+    grid-auto-flow: row;
+  }
+  
 }
