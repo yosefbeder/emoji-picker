@@ -93,28 +93,33 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
   exclude = [],
 }) => {
   // Excluding categories
-  const [categories, _] = useState<CategoryType[]>(() => {
-    let result: CategoryType[] = [];
-
-    allCategories.forEach(category => {
-      if (!exclude.includes(category)) result.push(category);
-    });
-
-    return result;
-  });
-
+  const [categories, setCategories] = useState<CategoryType[]>(allCategories);
+  
+  
   // Filtering emojis by category logic
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>(
     categories[0],
-  );
-
-  const onCategorySelect = (category: CategoryType) =>
+    );
+    
+    useEffect(() =>{
+      
+      let result: CategoryType[] = [];
+    
+      allCategories.forEach(category => {
+        if (!exclude.includes(category)) result.push(category);
+      });
+  
+      if(result.includes(selectedCategory)) setSelectedCategory(result[0])
+    
+      setCategories(result);
+    }, [exclude])
+    const onCategorySelect = (category: CategoryType) =>
     setSelectedCategory(category);
-
-  // Searching logic
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filteredEmojis, setFilteredEmojis] = useState<string[]>([]);
-
+    
+    // Searching logic
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredEmojis, setFilteredEmojis] = useState<string[]>([]);
+    
   const onSearch = (query: string) => {
     const regex = getRegex(query);
 
