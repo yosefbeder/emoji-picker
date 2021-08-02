@@ -49,7 +49,7 @@ const App = () => {
           <FormControl size="small" >
             <FormLabel>Categroies</FormLabel>
             <FormGroup>
-              {categories.map(category => <FormControlLabel control={<Checkbox color="primary" checked={!exclude.includes(category)} onClick={() => setExclude(prev => prev.includes(category)? [...prev.slice(0, prev.indexOf(category)), ...prev.slice(prev.indexOf(category) + 1)]: [...prev, category])}/>} label={category.split('_').map(w => capitalize(w)).join(' & ')} />)}
+              {categories.map((category, index) => <FormControlLabel key={index} control={<Checkbox color="primary" checked={!exclude.includes(category)} onClick={() => setExclude(prev => prev.includes(category)? [...prev.slice(0, prev.indexOf(category)), ...prev.slice(prev.indexOf(category) + 1)]: [...prev, category])}/>} label={category.split('_').map(w => capitalize(w)).join(' & ')} />)}
             </FormGroup>
           </FormControl>
         </ThemeProvider>

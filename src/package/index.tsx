@@ -63,7 +63,7 @@ const getEmojiObjs = (emojis: string[]) => {
 
 const getRecentlyUsedFromLocalStorage = () => {
   const fromLocalStorage = localStorage.getItem('recently-used');
-  const recentlyUsed = fromLocalStorage ? JSON.parse(fromLocalStorage) : [];
+  const recentlyUsed = fromLocalStorage ? JSON.parse(fromLocalStorage) : ['sob', 'joy', 'flushed', 'rolling_on_the_floor_laughing', 'sparkles'];
   return recentlyUsed;
 };
 
