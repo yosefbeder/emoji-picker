@@ -1,3 +1,3 @@
 export const getRegex = (query: string) => {
-  return new RegExp(query);
+  return new RegExp(query, 'i');
 };
