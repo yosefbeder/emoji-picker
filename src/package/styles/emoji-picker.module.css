@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 
-.container > *,
-.container > *::before,
-.container > *::after {
+.container > * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 300ms, color 300ms;
 }
 
 .container {
@@ -212,8 +211,6 @@
   height: var(--category-size);
   color: var(--category-color);
   cursor: pointer;
-
-  transition: color 200ms;
 }
 
 .category-container {
@@ -233,8 +230,6 @@
 
   margin: var(--searchbar-margin);
   padding: var(--searchbar-padding);
-
-  transition: all 200ms;
 }
 
 .searchbar:hover,
@@ -280,7 +275,6 @@
   border-radius: 50%;
   cursor: pointer;
   user-select: none;
-  transition: background-color 200ms;
 }
 
 .emoji:hover {
