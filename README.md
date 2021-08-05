@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+# Emoji-Picker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple and useful emoji-picker without much configurations 😎.
 
-## Available Scripts
+You can try to play with the configurations from this [Demo Project](https://yosefbeder.github.io/emoji-picker/).
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+Currently you can't install the package because it's not bundled yet 😢, but when it becomes available you will be able to install it from this command:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npm install @yosef_beder/emoji-picker
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+or
 
-### `npm test`
+```bash
+yarn add @yosef_beder/emoji-picker
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+To start using the component you shouldn't add any configs except `onEmojiClick`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Most of the configs focuses on customizing the way it looks (You can play with then from [here](https://yosefbeder.github.io/emoji-picker/)).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```javascript
+import React from 'react';
+import EmojiPicker from '@yosef_beder/emoji-picker';
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const App = () => {
+    const [emoji, setEmoji] = useState('');
+    
+    return (
+        <div>
+            <EmojiPicker onEmojiClick={emojiObj => setEmoji(emojiObj.emoji)}/>
+        </div>
+    )
+}
+```
 
-### `npm run eject`
+## Configurations
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Name | Type | Default Value | Required? | Description
+-----|------|---------------|-----------|------------
+`theme` | `'light' \| 'dark'` | `'light'` | No | Changes the theme from light to dark to suit all kind of apps.
+`size` | `'sm' \| 'med' \| 'lg'` | `'med'` | No | Changes the size of the container, category, and emoji.
+`style` | `CSSProperties` | `undefined` | No | Overrides the styles of the container and it's useful for positioning.
+`autoFocus` | `boolean` | `true` | No | Focuses the searching bar when the component is mounted.
+`defaultSkinTone` | `0 >= number > 6` | 0 | No | Defines the selected skin tone when the component is mounted.
+`exclude` | `('recently-used' \| 'smileys_people' \| 'animals_nature' \| 'food_drink' \| 'travel_places' \| 'activities' \| 'objects' \| 'symbols' \| 'flags')[]` | `[]` | No | Defines the categories that will be excluded.
+`onEmojiClick` | `(emojiObj: {name: string, emoji: string; skinTone: number}) => void` | `undefined` | Yes | The function that you pass here will be called whenever an emoji is clicked and the data of that emoji will be passed to you.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Notes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- This component library depends on the rem unit so please don't change the font size of the root element in your app or the sizes will be broken.
+- If you find any bug send me and email from [here](mailto:dryosefbeder@gmail.com).
+- This is an open-source library you can help me improving it or just see the code from [here](https://github.com/yosefbeder/emoji-picker).
+- This is my third real project with react so it may not be so good, but I've done my best over the last week to make it like this if you want to see my other projects check my github account from [here](https://github.com/yosefbeder).
