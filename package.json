@@ -1,9 +1,12 @@
 {
-  "name": "emoji-picker",
+  "name": "@yosefbeder/emoji-picker",
   "version": "0.1.0",
   "private": false,
   "author": "yosef_beder <dryosefbeder@gmail.com> (https://github.com/yosefbeder)",
   "homepage": "https://yosefbeder.github.io/emoji-picker/",
+  "main": "./lib/cjs/index.js",
+  "types": "./lib/cjs/index.d.ts",
+  "module": "./lib/esm/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/yosefbeder/emoji-picker.git"
@@ -31,10 +34,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run build:demo & npm run build:lib:cjs & npm run build:lib:esm",
+    "build:demo": "react-scripts build",
+    "build:lib:cjs": "tsc --project tsconfig.lib.cjs.json",
+    "build:lib:esm": "tsc --project tsconfig.lib.esm.json ",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build:demo",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {

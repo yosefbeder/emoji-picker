@@ -1,6 +1,6 @@
 import React from 'react';
 import Category from '../components/Category';
-import classes from '../styles/emoji-picker.module.css';
+import classes from '../../../styles/emoji-picker.module.css';
 import { CategoriesListProps } from '../types/props';
 import { capitalize } from '../utils/strings';
 

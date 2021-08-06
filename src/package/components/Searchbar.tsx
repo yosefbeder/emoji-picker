@@ -1,6 +1,6 @@
 import React from 'react';
 import { SearchbarProps } from '../types/props';
-import classes from '../styles/emoji-picker.module.css';
+import classes from '../../../styles/emoji-picker.module.css';
 
 const Searchbar = React.forwardRef<HTMLInputElement, SearchbarProps>(
   ({ value, onValueChange }, ref) => {

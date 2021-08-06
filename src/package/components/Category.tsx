@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CategoryProps } from '../types/props';
-import classes from '../styles/emoji-picker.module.css';
+import classes from '../../../styles/emoji-picker.module.css';
 import withTooltip from '../helpers/with-tooltip';
 
 const Category: React.FC<CategoryProps> = ({

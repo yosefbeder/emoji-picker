@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../styles/emoji-picker.module.css';
+import classes from '../../../styles/emoji-picker.module.css';
 import { FooterProps, SkinToneSelectorProps } from '../types/props';
 import { normalize } from '../utils/strings';
 

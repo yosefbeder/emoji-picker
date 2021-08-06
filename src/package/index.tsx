@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import classes from './styles/emoji-picker.module.css';
+import classes from '../../styles/emoji-picker.module.css';
 import CategoriesList from './containers/CategoriesList';
 import Searchbar from './components/Searchbar';
 import EmojisList from './containers/EmojisList';
@@ -63,7 +63,9 @@ const getEmojiObjs = (emojis: string[]) => {
 
 const getRecentlyUsedFromLocalStorage = () => {
   const fromLocalStorage = localStorage.getItem('recently-used');
-  const recentlyUsed = fromLocalStorage ? JSON.parse(fromLocalStorage) : ['sob', 'joy', 'flushed', 'rolling_on_the_floor_laughing', 'sparkles'];
+  const recentlyUsed = fromLocalStorage
+    ? JSON.parse(fromLocalStorage)
+    : ['sob', 'joy', 'flushed', 'rolling_on_the_floor_laughing', 'sparkles'];
   return recentlyUsed;
 };
 
@@ -94,32 +96,30 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
 }) => {
   // Excluding categories
   const [categories, setCategories] = useState<CategoryType[]>(allCategories);
-  
-  
+
   // Filtering emojis by category logic
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>(
     categories[0],
-    );
-    
-    useEffect(() =>{
-      
-      let result: CategoryType[] = [];
-    
-      allCategories.forEach(category => {
-        if (!exclude.includes(category)) result.push(category);
-      });
-  
-      if(!result.includes(selectedCategory)) setSelectedCategory(result[0])
-    
-      setCategories(result);
-    }, [exclude])
-    const onCategorySelect = (category: CategoryType) =>
+  );
+
+  useEffect(() => {
+    let result: CategoryType[] = [];
+
+    allCategories.forEach(category => {
+      if (!exclude.includes(category)) result.push(category);
+    });
+
+    if (!result.includes(selectedCategory)) setSelectedCategory(result[0]);
+
+    setCategories(result);
+  }, [exclude]);
+  const onCategorySelect = (category: CategoryType) =>
     setSelectedCategory(category);
-    
-    // Searching logic
-    const [searchQuery, setSearchQuery] = useState('');
-    const [filteredEmojis, setFilteredEmojis] = useState<string[]>([]);
-    
+
+  // Searching logic
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredEmojis, setFilteredEmojis] = useState<string[]>([]);
+
   const onSearch = (query: string) => {
     const regex = getRegex(query);
 
