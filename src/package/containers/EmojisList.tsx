@@ -1,6 +1,6 @@
 import React from 'react';
 import Emoji from '../components/Emoji';
-import classes from '../../../styles/emoji-picker.module.css';
+import classes from '../styles/emoji-picker.module.css';
 import { EmojisListProps } from '../types/props';
 import { normalize } from '../utils/strings';
 
