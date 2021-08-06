@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../../../styles/tooltip.module.css';
+import classes from '../styles/tooltip.module.css';
 
 const withTooltip = <T extends {}>(
   Component: React.FC<T>,

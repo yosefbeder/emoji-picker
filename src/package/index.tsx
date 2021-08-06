@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import classes from '../../styles/emoji-picker.module.css';
+import classes from './styles/emoji-picker.module.css';
 import CategoriesList from './containers/CategoriesList';
 import Searchbar from './components/Searchbar';
 import EmojisList from './containers/EmojisList';

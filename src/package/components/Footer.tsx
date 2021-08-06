@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../../../styles/emoji-picker.module.css';
+import classes from '../styles/emoji-picker.module.css';
 import { FooterProps, SkinToneSelectorProps } from '../types/props';
 import { normalize } from '../utils/strings';
 
@@ -36,10 +36,14 @@ const Footer: React.FC<FooterProps> = ({
   hoveredEmoji,
   setSelectedSkinTone,
   selectedSkinTone,
-  showHoveredEmoji
+  showHoveredEmoji,
 }) => {
   return (
-    <div className={`${classes.footer} ${showHoveredEmoji? '': classes['footer--skin-tone-selector-only']}`}>
+    <div
+      className={`${classes.footer} ${
+        showHoveredEmoji ? '' : classes['footer--skin-tone-selector-only']
+      }`}
+    >
       <div className={classes['hovered-emoji']}>
         {normalize(hoveredEmoji) || 'no emoji is hovered'}
       </div>
