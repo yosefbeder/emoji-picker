@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import classes from './styles/emoji-picker.module.css';
 import CategoriesList from './containers/CategoriesList';
 import Searchbar from './components/Searchbar';
@@ -92,8 +92,10 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
   style,
   autoFocus = true,
   defaultSkinTone = 0,
-  exclude = [],
+  exclude,
 }) => {
+  const excluded = useMemo(() => exclude || [], [exclude]);
+
   // Excluding categories
   const [categories, setCategories] = useState<CategoryType[]>(allCategories);
 
@@ -106,13 +108,14 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
     let result: CategoryType[] = [];
 
     allCategories.forEach(category => {
-      if (!exclude.includes(category)) result.push(category);
+      if (!excluded.includes(category)) result.push(category);
     });
 
     if (!result.includes(selectedCategory)) setSelectedCategory(result[0]);
 
     setCategories(result);
-  }, [exclude, selectedCategory]);
+  }, [excluded]);
+
   const onCategorySelect = (category: CategoryType) =>
     setSelectedCategory(category);
 
@@ -194,7 +197,7 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
         onEmojiMouseLeave={onEmojiMouseLeave}
       />
       <Footer
-        showHoveredEmoji={exclude.length < 2}
+        showHoveredEmoji={excluded.length < 2}
         hoveredEmoji={hoveredEmoji}
         setSelectedSkinTone={setSelectedSkinTone}
         selectedSkinTone={selectedSkinTone}
