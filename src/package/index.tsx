@@ -112,7 +112,7 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({
     if (!result.includes(selectedCategory)) setSelectedCategory(result[0]);
 
     setCategories(result);
-  }, [exclude]);
+  }, [exclude, selectedCategory]);
   const onCategorySelect = (category: CategoryType) =>
     setSelectedCategory(category);
 
