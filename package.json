@@ -1,16 +1,20 @@
 {
-  "name": "@yosefbeder/emoji-picker",
-  "version": "0.1.0",
+  "name": "@yosefbeder/react-emoji-picker",
+  "version": "0.1.1",
   "private": false,
-  "author": "yosef_beder <dryosefbeder@gmail.com> (https://github.com/yosefbeder)",
-  "homepage": "https://yosefbeder.github.io/emoji-picker/",
+  "author": "yosefbeder <dryosefbeder@gmail.com> (https://github.com/yosefbeder)",
+  "homepage": "https://yosefbeder.github.io/react-emoji-picker/",
   "main": "./lib/cjs/index.js",
   "types": "./lib/cjs/index.d.ts",
   "module": "./lib/esm/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yosefbeder/emoji-picker.git"
+    "url": "https://github.com/yosefbeder/react-emoji-picker.git"
   },
+  "keywords": [
+    "react",
+    "emoji-picker"
+  ],
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
@@ -37,7 +41,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "npm run build:demo & npm run build:lib:cjs & npm run build:lib:esm",
-    "build:demo": "npm react-scripts build",
+    "build:demo": "react-scripts build",
     "build:lib:cjs": "tsc --project tsconfig.lib.json & node scripts/copyfolder.js src/package/styles lib/cjs",
     "build:lib:esm": "tsc --project tsconfig.lib.json --module esnext --outDir lib/esm & node scripts/copyfolder.js src/package/styles lib/esm",
     "test": "react-scripts test",

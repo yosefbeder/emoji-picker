@@ -1,28 +1,28 @@
-# Emoji-Picker
+# React Emoji Picker
 
 A simple and useful emoji-picker without much configurations 😎.
 
-You can try to play with the configurations from this [Demo Project](https://yosefbeder.github.io/emoji-picker/).
+You can try to play with the configurations from this [Demo Project](https://yosefbeder.github.io/react-emoji-picker/).
 
 ## Installation
 
 You can install it with either
 
 ```bash
-npm install @yosefbeder/emoji-picker
+npm install @yosefbeder/react-emoji-picker
 ```
 
 or
 
 ```bash
-yarn add @yosefbeder/emoji-picker
+yarn add @yosefbeder/react-emoji-picker
 ```
 
 ## Usage
 
 To start using the component you shouldn't add any configs except `onEmojiClick`.
 
-Most of the configs focuses on customizing the way it looks (You can play with then from [here](https://yosefbeder.github.io/emoji-picker/)).
+Most of the configs focuses on customizing the way it looks (You can play with then from [here](https://yosefbeder.github.io/react-emoji-picker/)).
 
 ```javascript
 import React from 'react';
@@ -41,15 +41,42 @@ const App = () => {
 
 ## Configurations
 
-| Name              | Type                                                                                                                                                  | Default Value | Required? | Description                                                                                                                   |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `theme`           | `'light' \| 'dark'`                                                                                                                                   | `'light'`     | No        | Changes the theme from light to dark to suit all kind of apps.                                                                |
-| `size`            | `'sm' \| 'med' \| 'lg'`                                                                                                                               | `'med'`       | No        | Changes the size of the container, category, and emoji.                                                                       |
-| `style`           | `CSSProperties`                                                                                                                                       | `undefined`   | No        | Overrides the styles of the container and it's useful for positioning.                                                        |
-| `autoFocus`       | `boolean`                                                                                                                                             | `true`        | No        | Focuses the searching bar when the component is mounted.                                                                      |
-| `defaultSkinTone` | `0 >= number > 6`                                                                                                                                     | 0             | No        | Defines the selected skin tone when the component is mounted.                                                                 |
-| `exclude`         | `('recently-used' \| 'smileys_people' \| 'animals_nature' \| 'food_drink' \| 'travel_places' \| 'activities' \| 'objects' \| 'symbols' \| 'flags')[]` | `[]`          | No        | Defines the categories that will be excluded.                                                                                 |
-| `onEmojiClick`    | `(emojiObj: {name: string, emoji: string; skinTone: number}) => void`                                                                                 | `undefined`   | Yes       | The function that you pass here will be called whenever an emoji is clicked and the data of that emoji will be passed to you. |
+### Types
+
+```typescript
+type Theme = 'light' | 'dark';
+
+type Size = 'sm' | 'med' | 'lg';
+
+type Category =
+  | 'recently-used'
+  | 'smileys_people'
+  | 'animals_nature'
+  | 'food_drink'
+  | 'travel_places'
+  | 'activities'
+  | 'objects'
+  | 'symbols'
+  | 'flags';
+
+interface EmojiObj {
+  emoji: string;
+  name: string;
+  skinTone: number;
+}
+```
+
+### Props
+
+| Name              | Type       | Default Value | Required? | Description                                                                            |
+| ----------------- | ---------- | ------------- | --------- | -------------------------------------------------------------------------------------- |
+| `theme`           | `String`   | `'light'`     | No        | Of the type `Theme`.                                                                   |
+| `size`            | `String`   | `'med'`       | No        | Of the type `Size`.                                                                    |
+| `style`           | `Object`   | `undefined`   | No        | Overrides the styles of the container and it's useful for positioning.                 |
+| `autoFocus`       | `Boolean`  | `true`        | No        | Focuses the searching bar when the component is mounted.                               |
+| `defaultSkinTone` | `Number`   | 0             | No        | The selected skin tone when the component is mounted, It can be a number between 0 & 6 |
+| `exclude`         | `Array`    | `[]`          | No        | The categories that will be excluded, It's an array of `Category`.                     |
+| `onEmojiClick`    | `Function` | `undefined`   | Yes       | This passes `EmojiObj` to you as an argument.                                          |
 
 ## Notes
 
