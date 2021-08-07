@@ -26,7 +26,7 @@ Most of the configs focuses on customizing the way it looks (You can play with t
 
 ```javascript
 import React from 'react';
-import EmojiPicker from '@yosef_beder/emoji-picker';
+import EmojiPicker from '@yosefbeder/react-emoji-picker';
 
 const App = () => {
   const [emoji, setEmoji] = useState('');
