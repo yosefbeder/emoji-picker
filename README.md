@@ -1,5 +1,7 @@
 # React Emoji Picker
 
+![Themes](https://user-images.githubusercontent.com/78495625/128736983-b280e2c3-c691-43f8-b1a7-7d9e65dfe7de.png)
+
 A simple and useful emoji-picker without much configurations 😎.
 
 You can try to play with the configurations from this [Demo Project](https://yosefbeder.github.io/react-emoji-picker/).
