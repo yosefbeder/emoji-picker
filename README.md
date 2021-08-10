@@ -86,3 +86,9 @@ interface EmojiObj {
 - If you find any bug send me and email from [here](mailto:dryosefbeder@gmail.com).
 - This is an open-source library you can help me improving it or just see the code from [here](https://github.com/yosefbeder/emoji-picker).
 - This is my third real project with react so it may not be so good, but I've done my best over the last week to make it like this if you want to see my other projects check my github account from [here](https://github.com/yosefbeder).
+
+## License
+
+[MIT License](LICENSE)
+
+Copyright (c) 2021 [yosefbeder](https://github.com/yosefbeder)
