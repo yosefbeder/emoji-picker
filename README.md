@@ -1,7 +1,5 @@
 # React Emoji Picker
 
-![Themes](https://user-images.githubusercontent.com/78495625/128736983-b280e2c3-c691-43f8-b1a7-7d9e65dfe7de.png)
-
 A simple and useful emoji-picker without much configurations 😎.
 
 You can try to play with the configurations from this [Demo Project](https://yosefbeder.github.io/react-emoji-picker/).
@@ -31,13 +29,13 @@ import React from 'react';
 import EmojiPicker from '@yosefbeder/react-emoji-picker';
 
 const App = () => {
-  const [emoji, setEmoji] = useState('');
+	const [emoji, setEmoji] = useState('');
 
-  return (
-    <div>
-      <EmojiPicker onEmojiClick={emojiObj => setEmoji(emojiObj.emoji)} />
-    </div>
-  );
+	return (
+		<div>
+			<EmojiPicker onEmojiClick={emojiObj => setEmoji(emojiObj.emoji)} />
+		</div>
+	);
 };
 ```
 
@@ -51,20 +49,20 @@ type Theme = 'light' | 'dark';
 type Size = 'sm' | 'med' | 'lg';
 
 type Category =
-  | 'recently-used'
-  | 'smileys_people'
-  | 'animals_nature'
-  | 'food_drink'
-  | 'travel_places'
-  | 'activities'
-  | 'objects'
-  | 'symbols'
-  | 'flags';
+	| 'recently-used'
+	| 'smileys_people'
+	| 'animals_nature'
+	| 'food_drink'
+	| 'travel_places'
+	| 'activities'
+	| 'objects'
+	| 'symbols'
+	| 'flags';
 
 interface EmojiObj {
-  emoji: string;
-  name: string;
-  skinTone: number;
+	emoji: string;
+	name: string;
+	skinTone: number;
 }
 ```
 

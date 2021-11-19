@@ -1,70 +1,74 @@
 {
-  "name": "@yosefbeder/react-emoji-picker",
-  "version": "1.0.0",
-  "private": false,
-  "author": "yosefbeder <dryosefbeder@gmail.com> (https://github.com/yosefbeder)",
-  "homepage": "https://yosefbeder.github.io/react-emoji-picker/",
-  "main": "./lib/cjs/index.js",
-  "types": "./lib/cjs/index.d.ts",
-  "module": "./lib/esm/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yosefbeder/react-emoji-picker.git"
-  },
-  "keywords": [
-    "react",
-    "emoji-picker"
-  ],
-  "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
-  "dependencies": {
-    "react-icons": "^4.2.0",
-    "@types/react": "^17.0.15",
-    "@types/react-dom": "^17.0.9"
-  },
-  "devDependencies": {
-    "@material-ui/core": "^4.12.3",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.24",
-    "@types/node": "^12.20.17",
-    "gh-pages": "^3.2.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "typescript": "^4.3.5",
-    "web-vitals": "^1.1.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "npm run build:demo & npm run build:lib:cjs & npm run build:lib:esm",
-    "build:demo": "react-scripts build",
-    "build:lib:cjs": "tsc --project tsconfig.lib.json & node scripts/copyfolder.js src/package/styles lib/cjs",
-    "build:lib:esm": "tsc --project tsconfig.lib.json --module esnext --outDir lib/esm & node scripts/copyfolder.js src/package/styles lib/esm",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build:demo",
-    "deploy": "gh-pages -d build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "@yosefbeder/react-emojis",
+	"version": "0.0.0",
+	"private": false,
+	"author": "yosefbeder <dryosefbeder@gmail.com> (https://github.com/yosefbeder)",
+	"homepage": "https://yosefbeder.github.io/react-emojis/",
+	"main": "./dist/cjs/index.js",
+	"types": "./dist/cjs/index.d.ts",
+	"module": "./dist/esm/index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/yosefbeder/react-emojis.git"
+	},
+	"keywords": [
+		"react",
+		"emoji-picker"
+	],
+	"peerDependencies": {
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2"
+	},
+	"dependencies": {
+		"react-icons": "^4.2.0"
+	},
+	"devDependencies": {
+		"@types/react": "^17.0.15",
+		"@types/react-dom": "^17.0.9",
+		"@material-ui/core": "^4.12.3",
+		"@testing-library/jest-dom": "^5.14.1",
+		"@testing-library/react": "^11.2.7",
+		"@testing-library/user-event": "^12.8.3",
+		"@types/jest": "^26.0.24",
+		"@types/node": "^12.20.17",
+		"gh-pages": "^3.2.3",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-scripts": "4.0.3",
+		"typescript": "^4.3.5",
+		"web-vitals": "^1.1.2"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "npm run build:demo & npm run build:lib:cjs & npm run build:lib:esm",
+		"build:demo": "react-scripts build",
+		"build:lib:cjs": "tsc --project tsconfig.lib.json & node scripts/copyfolder.js src/package/styles dist/cjs",
+		"build:lib:esm": "tsc --project tsconfig.lib.json --module esnext --outDir dist/esm & node scripts/copyfolder.js src/package/styles dist/esm",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"predeploy": "npm run build:demo",
+		"deploy": "gh-pages -d build"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org",
+		"access": "public"
+	}
 }
